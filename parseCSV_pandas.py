@@ -4,8 +4,8 @@ import pandas as pd
 headers_to_remove = ["Admin1 Code", "Admin2 Code", "Admin3 Code", "Admin4 Code", "Modification date", "Feature Class","Feature Code"]
 
 # Input and output file names
-input_file = 'geonames-all-cities-with-a-population-1000.csv'
-output_file = 'geonames-all-cities-with-a-population-1000_test.csv'
+input_file = 'geonames-all-cities-with-a-population-1000_prod.csv'
+output_file = 'geonames-all-cities-with-a-population-1000_prod2.csv'
 
 def process_csv(input_file, output_file):
     # Read the CSV file
@@ -20,6 +20,7 @@ def process_csv(input_file, output_file):
     
     # Remove rows where 'Country name EN' is empty
     df = df[df['Country name EN'].notna() & (df['Country name EN'].str.strip() != '')]
+
 
     # Write the result to a new CSV file
     df.to_csv(output_file, sep=';', index=False)
